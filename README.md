@@ -10,7 +10,7 @@ The investigation started with real-world use, then moved into controlled field 
 
 ![How the evidence changed the hypothesis](mapmyrun-hypothesis-evolution2.png)
 
-The controlled tests weakened the idea that short GPS obstruction alone explained the severe behavior I had observed. The stronger concern became the boundary between valid movement data and valid workout data.
+The controlled tests showed that short GPS obstruction could create noisy data without producing the much more severe behavior seen in the vehicle-contaminated workouts. That shifted the focus toward the boundary between valid movement data and valid workout data.
 
 ## Assessment documents
 
@@ -47,6 +47,21 @@ The strongest quality concern is therefore not that GPS can be noisy. It is that
 This was an external assessment, so I did not have access to source code, backend logs, raw GPS samples, internal requirements, production telemetry, or fleet-wide support data.
 
 I do not claim to have identified a specific implementation defect, universal occurrence rate, or required product solution.
+
+## Relationship to Other Portfolio Projects
+
+This project is part of a six-project QA portfolio demonstrating complementary quality engineering skills:
+
+| Project | Focus | Stack |
+| --- | --- | --- |
+| [pharmacy-spend-etl-qa](https://github.com/jensenmd/pharmacy-spend-etl-qa) | ETL pipeline validation, SQL-driven data integrity testing | Python / pytest / SQLite / pandas |
+| [qa-automation-showcase](https://github.com/jensenmd/qa-automation-showcase) | REST API testing, data validation, CI/CD integration | Python / pytest / Postman / GitHub Actions |
+| [restful-booker-qa](https://github.com/jensenmd/restful-booker-qa) | Full-stack layered testing — API + UI automation | Postman / Newman / Playwright / GitHub Actions |
+| [ai-qa-framework](https://github.com/jensenmd/ai-qa-framework) | AI-assisted test generation, human-in-the-loop validation | Python / Claude API / pytest / GitHub Actions |
+| [claude-code-qa-sessions](https://github.com/jensenmd/claude-code-qa-sessions) | Agentic QA analysis with human-reviewed recommendations | Claude Code / GitHub / QA analysis |
+| **mapmyrun-quality-investigation** (this repo) | Black-box mobile/GPS QA investigation — field testing and evidence-bounded analysis | iPhone / Apple Watch / MapMyRun / field evidence |
+
+Together they demonstrate data validation, API testing, UI automation, AI-assisted QA workflows, exploratory investigation, and evidence-driven quality engineering across multiple system layers.
 
 ## AI assistance
 
