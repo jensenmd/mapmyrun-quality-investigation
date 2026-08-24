@@ -8,7 +8,7 @@ The investigation started with real-world use, then moved into controlled field 
 
 ## How the evidence changed the hypothesis
 
-![How the evidence changed the hypothesis](mapmyrun-hypothesis-evolution.png)
+![How the evidence changed the hypothesis](mapmyrun-hypothesis-evolution2.png)
 
 The controlled tests weakened the idea that short GPS obstruction alone explained the severe behavior I had observed. The stronger concern became the boundary between valid movement data and valid workout data.
 
