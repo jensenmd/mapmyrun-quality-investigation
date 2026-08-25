@@ -1,70 +1,56 @@
 # MapMyRun Quality Investigation
 
-**External black-box field assessment | August 22–23, 2026**
+External black-box field assessment | August 22-23, 2026 | Analysis revised August 24, 2026
 
-I spent a weekend testing MapMyRun on iPhone and Apple Watch after noticing something that made me question the integrity of a saved workout record.
+I tested MapMyRun on iPhone and Apple Watch after encountering workout records that made me question the integrity and trustworthiness of saved performance data.
 
-The investigation started with real-world use, then moved into controlled field testing. The goal was not to hunt for bugs or prove a theory. It was to understand what the evidence actually supported, what it did not, and where I would investigate next with internal system access.
+The assessment contains two independent test tracks. They are intentionally evaluated separately rather than presented as a single causal story.
 
-## How the evidence changed the hypothesis
+## Track 1 - workout integrity and UX
 
-![How the evidence changed the hypothesis](mapmyrun-hypothesis-evolution2.png)
+Two Run records containing known vehicle travel saved vehicle-scale movement as workout performance. One included a 2:02 mile. The defensible concern is user trust: physically implausible performance was presented as authoritative workout data without an observed integrity signal or evaluated recovery path.
 
-The controlled tests showed that short GPS obstruction could create noisy data without producing the much more severe behavior seen in the vehicle-contaminated workouts. That shifted the focus toward the boundary between valid movement data and valid workout data.
+This external assessment does not identify the responsible component, establish population frequency, or claim a specific implementation defect.
+
+## Track 2 - GPS-obstruction resilience
+
+Three controlled Gold Camp Road walks crossed Tunnel #1 six times across iPhone-started, Watch-started, and phone-off acquisition paths. Some instantaneous traces were noisy, but all three saved workouts remained physically plausible.
+
+That is a positive quality result. Under the tested conditions, MapMyRun demonstrated respectable reliability and graceful degradation.
+
+![Balanced MapMyRun quality assessment](Michael_Jensen_MapMyRun_Balanced_Quality_Assessment.png)
 
 ## Assessment documents
 
-### Quick read
-**[Weekend Quality Assessment — 1 page](Michael_Jensen_MapMyRun_Weekend_Quality_Assessment.pdf)**
+- [Weekend Quality Assessment - one-page executive brief](Michael_Jensen_MapMyRun_Weekend_Quality_Assessment.pdf)
+- [Quality Risk Assessment and Engineering Strategy - detailed case study](Michael_Jensen_MapMyRun_Senior_QE_Assessment.pdf)
 
-A concise summary of the field tests, observations, supported interpretation, and provisional risk.
+## Quality-lead response
 
-### Full case study
-**[Senior QE Assessment](Michael_Jensen_MapMyRun_Senior_QE_Assessment.pdf)**
+With internal access, I would turn the field evidence into a managed quality system:
 
-Detailed test strategy, evidence, limitations, alternative explanations, findings, and recommended engineering follow-up.
+- Establish prevalence, user impact, recovery behavior, and downstream propagation.
+- Define product ownership and policy for activity-inconsistent movement.
+- Capture and replay representative GPS traces and pedestrian-to-vehicle transitions deterministically.
+- Validate raw samples, accepted segments, aggregates, UI, synchronization, and downstream consumers.
+- Add activity-plausibility, internal-consistency, preservation, explainability, and idempotent-sync properties to automated regression coverage.
+- Instrument privacy-appropriate acceptance decisions and monitor production outcomes by device, OS, app version, and workflow.
+- Preserve the Gold Camp results as a positive resilience baseline.
 
-## What I tested
+## Field-test retrospective
 
-The assessment included:
+The Gold Camp series also exposed a limitation in my own protocol: the three paths were very similar, but not controlled tightly enough to attribute small distance differences to the app. If I repeated the work, I would synchronize clocks and start each trial at the top of a minute; mark identical start, turnaround, and end points; predefine variables and acceptance criteria; repeat each condition; use a field checklist or voice timestamps; and log every route deviation immediately.
 
-- iPhone- and Apple Watch-started workouts
-- repeated tunnel passages on Gold Camp Road near Colorado Springs
-- paired-phone and phone-off Watch scenarios
-- real-world transitions between walking, driving, stopping, and walking again
-- comparison of pace, route, heart rate, cadence, elevation, and saved workout behavior
+That limitation reduces causal confidence around the distance variance. It does not erase the positive result that all three workouts saved successfully and remained plausible. The lesson is to preserve uncertainty, improve the protocol, and run the next experiment with tighter controls.
 
-## What I found
+## Evidence boundaries
 
-Two Run records containing known vehicle travel saved vehicle-scale movement as workout performance.
+The assessment used field notes, saved workout summaries, route maps, split tables, and analysis screens. It did not use source code, backend logs, raw GPS samples, internal requirements, controlled location replay, production telemetry, or fleet-wide support data.
 
-The controlled tunnel tests produced noisy instantaneous data at times, but all three saved walking workouts remained physically plausible. That made simple GPS obstruction a less convincing explanation for the much more severe vehicle-contamination behavior.
+## Revision note
 
-The strongest quality concern is therefore not that GPS can be noisy. It is that movement can be geographically valid while still being inconsistent with the activity the workout claims to represent.
-
-## What I did not conclude
-
-This was an external assessment, so I did not have access to source code, backend logs, raw GPS samples, internal requirements, production telemetry, or fleet-wide support data.
-
-I do not claim to have identified a specific implementation defect, universal occurrence rate, or required product solution.
-
-## Relationship to Other Portfolio Projects
-
-This project is part of a six-project QA portfolio demonstrating complementary quality engineering skills:
-
-| Project | Focus | Stack |
-| --- | --- | --- |
-| [pharmacy-spend-etl-qa](https://github.com/jensenmd/pharmacy-spend-etl-qa) | ETL pipeline validation, SQL-driven data integrity testing | Python / pytest / SQLite / pandas |
-| [qa-automation-showcase](https://github.com/jensenmd/qa-automation-showcase) | REST API testing, data validation, CI/CD integration | Python / pytest / Postman / GitHub Actions |
-| [restful-booker-qa](https://github.com/jensenmd/restful-booker-qa) | Full-stack layered testing — API + UI automation | Postman / Newman / Playwright / GitHub Actions |
-| [ai-qa-framework](https://github.com/jensenmd/ai-qa-framework) | AI-assisted test generation, human-in-the-loop validation | Python / Claude API / pytest / GitHub Actions |
-| [claude-code-qa-sessions](https://github.com/jensenmd/claude-code-qa-sessions) | Agentic QA analysis with human-reviewed recommendations | Claude Code / GitHub / QA analysis |
-| **mapmyrun-quality-investigation** (this repo) | Black-box mobile/GPS QA investigation — field testing and evidence-bounded analysis | iPhone / Apple Watch / MapMyRun / field evidence |
-
-Together they demonstrate data validation, API testing, UI automation, AI-assisted QA workflows, exploratory investigation, and evidence-driven quality engineering across multiple system layers.
+After publication, I reviewed the analysis again and concluded that the original narrative connected the independently designed Gold Camp and vehicle-transition test tracks too closely. This revision separates their evidence boundaries, reports the positive resilience result directly, and expands the quality-management and automation strategy. Raw observations were not changed.
 
 ## AI assistance
 
-AI was used to accelerate research, test-design iteration, evidence normalization, and analysis.
-
-Field execution, observation capture, evidence review, challenge of competing interpretations, and final conclusions remained human-owned.
+AI accelerated background research, test-design iteration, evidence normalization, challenge of competing interpretations, and document production. I executed the field tests, captured observations, reviewed the evidence, corrected the narrative, and retained ownership of the final conclusions.
