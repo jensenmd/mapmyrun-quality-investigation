@@ -1,5 +1,7 @@
 # MapMyRun Quality Investigation
 
+![mapmyrun-quality-investigation portfolio project card](mapmyrun-quality-investigation-project-card.png)
+
 External black-box field assessment | August 22-23, 2026 | Analysis revised August 24, 2026
 
 I tested MapMyRun on iPhone and Apple Watch after encountering workout records that made me question the integrity and trustworthiness of saved performance data.
@@ -64,7 +66,7 @@ This project is part of a broader QA portfolio demonstrating complementary quali
 | Project | Focus |
 |---|---|
 | [android-appium-wdio-poc](https://github.com/jensenmd/android-appium-wdio-poc) | Native Android UI automation proof of concept using Appium, WebdriverIO, TypeScript, and UiAutomator2 |
-| [mapmyrun-quality-investigation](https://github.com/jensenmd/mapmyrun-quality-investigation) | Black-box mobile and GPS quality investigation using field evidence and bounded conclusions |
+| [mapmyrun-quality-investigation](https://github.com/jensenmd/mapmyrun-quality-investigation) **(this repository)** | Black-box mobile and GPS quality investigation using field evidence and bounded conclusions |
 | [restful-booker-qa](https://github.com/jensenmd/restful-booker-qa) | Layered API and UI automation using Postman, Newman, Playwright, and GitHub Actions |
 | [pharmacy-spend-etl-qa](https://github.com/jensenmd/pharmacy-spend-etl-qa) | ETL pipeline and SQL-driven data-integrity validation modeled after healthcare analytics work |
 | [qa-automation-showcase](https://github.com/jensenmd/qa-automation-showcase) | REST API testing, data validation, and CI/CD-integrated automation |
