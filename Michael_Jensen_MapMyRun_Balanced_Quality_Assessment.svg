@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#081329"/><stop offset="1" stop-color="#141d3c"/>
+    </linearGradient>
+    <linearGradient id="good" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d6d65"/><stop offset="1" stop-color="#164675"/>
+    </linearGradient>
+    <linearGradient id="question" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#433167"/><stop offset="1" stop-color="#6c3b54"/>
+    </linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="12" stdDeviation="18" flood-opacity=".28"/></filter>
+  </defs>
+  <rect width="1600" height="900" rx="34" fill="url(#bg)"/>
+  <g font-family="Inter, Segoe UI, Arial, sans-serif">
+    <text x="90" y="94" fill="#91a9d8" font-size="25" font-weight="800" letter-spacing="5">BALANCED QUALITY ASSESSMENT</text>
+    <text x="90" y="160" fill="#fff" font-size="51" font-weight="800">Two independent test tracks.</text>
+    <text x="90" y="218" fill="#fff" font-size="51" font-weight="800">One evidence-led quality judgment.</text>
+
+    <g filter="url(#shadow)">
+      <rect x="90" y="282" width="690" height="380" rx="30" fill="url(#question)"/>
+      <circle cx="157" cy="354" r="35" fill="#fff" opacity=".16"/>
+      <text x="157" y="367" text-anchor="middle" fill="#fff" font-size="34" font-weight="800">1</text>
+      <text x="215" y="348" fill="#d9cdf8" font-size="22" font-weight="800" letter-spacing="3">WALK → DRIVE</text>
+      <text x="215" y="390" fill="#fff" font-size="34" font-weight="800">User-trust edge case</text>
+      <text x="140" y="455" fill="#f6f1ff" font-size="25">Two saved Run records included known vehicle travel,</text>
+      <text x="140" y="492" fill="#f6f1ff" font-size="25">including a physically implausible 2:02 mile.</text>
+      <text x="140" y="547" fill="#f6f1ff" font-size="25">The app may have behaved as designed. The open</text>
+      <text x="140" y="584" fill="#f6f1ff" font-size="25">question is whether a predictable mistake deserves</text>
+      <text x="140" y="621" fill="#f6f1ff" font-size="25">better prevention, detection, or recovery.</text>
+    </g>
+
+    <g filter="url(#shadow)">
+      <rect x="820" y="282" width="690" height="380" rx="30" fill="url(#good)"/>
+      <circle cx="887" cy="354" r="35" fill="#fff" opacity=".16"/>
+      <text x="887" y="367" text-anchor="middle" fill="#fff" font-size="34" font-weight="800">2</text>
+      <text x="945" y="348" fill="#bcefe5" font-size="22" font-weight="800" letter-spacing="3">GOLD CAMP TUNNEL</text>
+      <text x="945" y="390" fill="#fff" font-size="34" font-weight="800">Positive resilience result</text>
+      <text x="870" y="455" fill="#efffff" font-size="25">Three device conditions crossed Tunnel #1 six times.</text>
+      <text x="870" y="500" fill="#efffff" font-size="25">Some instantaneous GPS traces were noisy, but every</text>
+      <text x="870" y="537" fill="#efffff" font-size="25">workout saved successfully and remained plausible.</text>
+      <text x="870" y="592" fill="#efffff" font-size="25">Under the tested conditions, MapMyRun demonstrated</text>
+      <text x="870" y="629" fill="#efffff" font-size="25">respectable reliability and graceful degradation.</text>
+    </g>
+
+    <g filter="url(#shadow)">
+      <rect x="90" y="706" width="1420" height="124" rx="28" fill="#101b35" stroke="#5470a6" stroke-width="2"/>
+      <text x="135" y="752" fill="#91a9d8" font-size="21" font-weight="800" letter-spacing="3">NEXT QUESTIONS</text>
+      <text x="135" y="796" fill="#fff" font-size="25">Establish prevalence and downstream impact · evaluate recovery · test guardrail tradeoffs · preserve the positive resilience baseline</text>
+    </g>
+    <text x="1510" y="870" text-anchor="end" fill="#778caf" font-size="21">Michael D. Jensen · External black-box assessment</text>
+  </g>
+</svg>
