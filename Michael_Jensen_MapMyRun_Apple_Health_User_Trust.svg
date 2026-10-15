@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Workout integrity and the downstream trust boundary</title>
+<desc id="desc">Known vehicle travel was included in saved Run records, and affected activity was later seen in Apple Health. The intervening sync and transformation behavior was not verified.</desc>
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#080d14"/><stop offset="1" stop-color="#0e1520"/></linearGradient><linearGradient id="accent"><stop stop-color="#34c6b3"/><stop offset=".52" stop-color="#398eff"/><stop offset="1" stop-color="#eab45b"/></linearGradient></defs>
+<rect width="1600" height="900" rx="28" fill="url(#bg)"/><rect width="1600" height="7" fill="url(#accent)"/>
+<g font-family="Arial, sans-serif">
+<text x="80" y="82" fill="#73d9cb" font-size="19" letter-spacing="3" font-weight="700">MAPMYRUN / USER TRUST</text>
+<text x="80" y="146" fill="#f3f6fb" font-size="46" font-weight="700">A precise-looking record can still mislead.</text>
+<text x="80" y="192" fill="#b8c4d2" font-size="24">Reported observations at either end; unverified processing in between.</text>
+<rect x="80" y="265" width="440" height="268" rx="22" fill="#211e18" stroke="#9c793e"/>
+<rect x="580" y="265" width="440" height="268" rx="22" fill="#142338" stroke="#398eff" stroke-dasharray="9 7"/>
+<rect x="1080" y="265" width="440" height="268" rx="22" fill="#211e18" stroke="#9c793e"/>
+<g font-size="17" font-weight="700" letter-spacing="1.5"><text x="110" y="310" fill="#f2ce96">REPORTED OBSERVATION</text><text x="610" y="310" fill="#a4caff">NOT VERIFIED</text><text x="1110" y="310" fill="#f2ce96">REPORTED OBSERVATION</text></g>
+<g fill="#f3f6fb" font-size="28" font-weight="700"><text x="110" y="363">MapMyRun record</text><text x="610" y="363">Sync / transformation</text><text x="1110" y="363">Apple Health view</text></g>
+<g fill="#c3ccd8" font-size="23">
+<text x="110" y="417">Active Run included known</text><text x="110" y="450">vehicle travel and</text><text x="110" y="483">vehicle-scale performance.</text>
+<text x="610" y="417">Timing, field mapping,</text><text x="610" y="450">ownership, and correction</text><text x="610" y="483">propagation remain unknown.</text>
+<text x="1110" y="417">Affected activity was later</text><text x="1110" y="450">seen in a trusted</text><text x="1110" y="483">daily activity view.</text>
+</g>
+<g stroke="#7993ae" stroke-width="3" fill="none" stroke-dasharray="6 6"><path d="M529 399H570M1029 399H1070"/></g>
+<g stroke="#7993ae" stroke-width="3" fill="none"><path d="M562 391L570 399L562 407M1062 391L1070 399L1062 407"/></g>
+<rect x="80" y="588" width="1440" height="195" rx="20" fill="#111c28" stroke="#34465a"/>
+<text x="114" y="633" fill="#a4caff" font-size="18" font-weight="700" letter-spacing="2">QUALITY QUESTION</text>
+<g fill="#f3f6fb" font-size="27"><text x="114" y="678">Can users recognize, understand, and repair misleading activity data?</text></g>
+<g fill="#b8c4d2" font-size="23"><text x="114" y="725">Investigate recovery and downstream impact before choosing a guardrail.</text><text x="114" y="759">This is a user-trust signal, not a verified architecture or component-level diagnosis.</text></g>
+<path d="M80 837H1520" stroke="#26323e"/>
+<text x="80" y="872" fill="#8297ad" font-size="17">Illustrative assessment diagram. Neither endpoint establishes the intervening processing path.</text>
+<text x="1520" y="872" text-anchor="end" fill="#8297ad" font-size="17">Michael D. Jensen</text>
+</g></svg>

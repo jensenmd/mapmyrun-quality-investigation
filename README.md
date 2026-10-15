@@ -1,131 +1,87 @@
 # MapMyRun Quality Investigation
 
-Exploratory mobile field investigation with positive findings, a reproducible user-trust concern, and deliberately bounded conclusions.
+A weekend field investigation of workout-record integrity and GPS resilience. I used an application question as the starting point, tested what I could with personal devices and nearby terrain, and separated the findings from the explanations I could not yet prove.
 
-![MapMyRun quality investigation project card](mapmyrun-quality-investigation-project-card.png)
+![MapMyRun quality investigation: two independent evidence tracks and a balanced assessment](mapmyrun-quality-investigation-project-card.png)
 
-Built by **Michael D. Jensen** — Senior QA Engineer with 15+ years of enterprise testing experience and a practical focus on risk, evidence, and how real users experience quality.
+**Michael D. Jensen** · Independent QA investigation · August 2026
 
-🔗 [LinkedIn](https://www.linkedin.com/in/michaeljensen-qa/) | 📧 jensen.md@gmail.com
+[Assessment brief](Michael_Jensen_MapMyRun_Weekend_Quality_Assessment.pdf) · [Detailed assessment](Michael_Jensen_MapMyRun_Senior_QE_Assessment.pdf) · [Accessible text and recorded measurements](docs/assessment.md)
 
----
+## The Challenge
 
-## What This Project Demonstrates
+While applying for a role at Outside supporting MapMyFitness, I encountered a question I recall as: **“What are the biggest quality issues with MapMyRun currently?”** The original application text is not archived here, so that is recalled wording.
 
-| Quality skill | Evidence in this investigation |
-|---|---|
-| Exploratory judgment | Turned ordinary use into a focused follow-up experiment without forcing the evidence toward a predetermined answer |
-| Mobile field testing | Exercised iPhone, Apple Watch, GPS obstruction, phone availability, and pedestrian-to-vehicle transitions |
-| Evidence discipline | Kept the Gold Camp resilience tests separate from the walk-to-drive records and separated observation from inference |
-| Product-quality thinking | Evaluated a predictable human mistake through prevention, detection, recovery, and user-trust tradeoffs |
-| Honest technical communication | Reported positive results, limitations, competing explanations, and next questions without claiming an unproven defect |
+I wanted to answer with something I had actually investigated. I had a weekend, an iPhone, an Apple Watch, and the tunnels on nearby Gold Camp Road in Colorado Springs. I used MapMyRun as an ordinary customer, followed an unexpected observation, and exercised recording under different device conditions.
 
-This is not a source-code audit or a claim that MapMyRun is broken. It is an external black-box investigation showing how I move from curiosity to evidence to judgment when product behavior and user experience do not align cleanly.
+That access could support a focused investigation; it could not establish the product’s biggest issues. The value of the work is in choosing useful questions, reporting what held up, and knowing where the evidence stops. This is independent work, with no affiliation or endorsement implied.
 
----
+## What I Investigated
 
-## Why This Investigation?
+| Track | What I did | What was reported |
+| --- | --- | --- |
+| **Workout-record integrity** | Followed an accidental unended Run session with a deliberate pedestrian-to-vehicle follow-up | Two Run records included known vehicle travel and vehicle-scale performance; one contained a 2:02 mile |
+| **GPS and device resilience** | Walked through Gold Camp Road Tunnel #1 and back under three phone / Watch conditions | All three workouts saved and remained physically plausible across six tunnel passages |
 
-While applying for a QA Automation Engineer role supporting the MapMyFitness app suite, I was asked to identify important current quality issues. Rather than speculate, I installed MapMyRun, used it as a new customer, and timeboxed a weekend field investigation.
+The tracks are independent. The tunnel walks do not explain the vehicle-transition records, and the workout-integrity concern does not erase the positive resilience result.
 
-I began with no defect hypothesis and expected the app to perform well. It did: the controlled GPS-obstruction tests produced plausible saved workouts under every tested condition. A separate, accidental walk-to-drive transition exposed a different question—not whether the software violated a known requirement, but whether a predictable user mistake can create authoritative-looking activity data that reduces trust downstream.
+![Independent workout-integrity and GPS-resilience findings](Michael_Jensen_MapMyRun_Balanced_Quality_Assessment.png)
 
----
+### Workout-record integrity: a user-trust question
 
-## Investigation at a Glance
+Leaving a Run active during known driving produced misleading workout performance. The follow-up again included vehicle travel; Auto-Pause was on and a paused state was observed, but the complete state sequence was not reconstructed.
 
-### 1. Accidental observation
+Recording movement until a user ends a session may be intentional. I did not establish a violated requirement or a faulty component. The useful question is whether users can recognize, understand, and repair the result of a foreseeable mistake. The existing recovery workflow needs a fuller assessment before recommending a feature.
 
-During ordinary use, I forgot to end a Run session before driving. The saved workout included vehicle travel and a physically implausible 2:02 mile. That observation became the basis for a deliberate follow-up—not a conclusion about root cause.
+Affected activity was later observed in an Apple Health daily view. That supports a downstream user-trust concern, but it does not establish the synchronization timing, field transformations, responsible component, or wider impact.
 
-### 2. Focused reproduction
+![Reported MapMyRun and Apple Health observations separated by an unverified processing boundary](Michael_Jensen_MapMyRun_Apple_Health_User_Trust.png)
 
-The next morning, I exercised a similar pedestrian-to-vehicle transition during a walk to Walmart. A second saved Run record again included known vehicle travel. The behavior was consistent with the documented expectation that the user must end the workout.
+### GPS and device resilience: a positive field result
 
-### 3. Independent resilience tests
+Each tunnel walk began in open air, crossed Tunnel #1, continued beyond it, reversed, and crossed back:
 
-Later that morning, I ran three separate Gold Camp Road scenarios across the same tunnel route:
+1. **GC-01:** iPhone-started; phone carried; Apple Watch worn.
+2. **GC-02:** Watch-started; powered-on phone left at the start.
+3. **GC-03:** Watch-started; phone powered off and left at the start.
 
-1. iPhone-started and carried, with Apple Watch worn.
-2. Apple Watch-started, with the powered-on iPhone left at the start.
-3. Apple Watch-started, with the iPhone powered off and left at the start.
+The reports describe transient GPS noise but plausible saved results in all three conditions. Reported average pace stayed near 20 minutes per mile. The 0.91–1.07 mile distance spread is not evidence of a defect by itself: durations and exact execution lengths varied. There was one walk per condition, no reference measurement of distance accuracy, and no raw-sample analysis to establish sensor ownership or a fallback mechanism.
 
-Each route began in open air, crossed Tunnel #1, continued beyond it, reversed, crossed back, and ended after returning to open air. All three workouts saved successfully and remained physically plausible.
+## The Quality Judgment
 
----
+**A product can record movement as intended and still leave a user with a misleading result.** Whether that deserves prevention, a warning, better recovery, or no change depends on evidence about prevalence, impact, existing behavior, and tradeoffs.
 
-## What the Evidence Showed
+This investigation supports a positive resilience finding and further inquiry into workout integrity. It does not establish root cause, production severity, population frequency, or the best intervention. False positives, accessibility, privacy, battery use, and implementation cost belong in the decision.
 
-### Positive finding: graceful degradation
+## What I Would Do Next
 
-The Gold Camp series produced some expected instantaneous GPS noise, but no catastrophic route corruption or impossible saved workout. Under the tested conditions, MapMyRun handled obstruction and changing device availability with respectable resilience.
+- **Explore recovery:** can a user identify, trim, relabel, or otherwise correct the affected workout?
+- **Check downstream correction:** does correcting the workout change what appears in Apple Health?
+- **Establish importance:** what evidence about repeatability, user impact, and existing recovery would justify treating this as a significant quality issue?
 
-### User-trust concern: authoritative-looking bad data
+These are proposed follow-up checks, not work completed during the weekend. Their results should guide any discussion of product changes; the positive Gold Camp results remain a separate baseline.
 
-The two walk-to-drive records preserved known vehicle movement as Run performance. I later observed the resulting activity contributing to a trusted Apple Health activity view. The exact synchronization timing, responsible component, broader frequency, and downstream treatment remain outside the evidence.
+## Evidence, Reports, and Revision History
 
-![Apple Health user-trust flow](Michael_Jensen_MapMyRun_Apple_Health_User_Trust.png)
+The original assessments date field work **August 22–23, 2026** and an interpretation revision **August 30**. The measurements here are transcribed from those assessments. Original workout screenshots, field notes, raw sensor samples, and version records are not archived in this repository; the reports are the retained record, not a reproducible raw dataset.
 
----
+| Read | Purpose |
+| --- | --- |
+| [Assessment brief — PDF](Michael_Jensen_MapMyRun_Weekend_Quality_Assessment.pdf) / [text](docs/brief.md) | Short findings, limits, and next decisions |
+| [Detailed assessment — PDF](Michael_Jensen_MapMyRun_Senior_QE_Assessment.pdf) / [text](docs/assessment.md) | Methods, record IDs, measurements, interpretations, and engineering questions |
+| [Revision notes](docs/revision-notes.md) | What changed in the presentation and where the retained measurements came from |
+| [Visual system and regeneration](assets/README.md) | Editable graphics, report sources, and the investigation design variant |
 
-## Core Quality Insight
+The initial narrative connected the two tracks too tightly. Review separated their methods and conclusions. This October presentation refactor makes that reasoning easier to follow; it adds no new field tests or stronger claims about the observations.
 
-> **MapMyRun may have behaved exactly as designed. The quality question is whether a predictable human mistake deserves better prevention, detection, or recovery—balanced against false positives, accessibility, privacy, battery use, and implementation cost.**
+## What This Demonstrates
 
-That distinction matters. “Working as designed” answers a requirements question; it does not automatically settle the product-quality question. A guardrail might improve trust, but an aggressive one could interrupt legitimate users, misclassify unusual workouts, consume battery, or create accessibility problems. The right response begins with evidence about prevalence and impact—not a reflexive fix.
+Exploratory testing, mobile field-test design, cross-metric reasoning, product-risk analysis, and clear technical communication. The work includes reporting favorable results, challenging an attractive explanation, and improving the interpretation when the evidence calls for it.
 
-![Balanced MapMyRun quality assessment](Michael_Jensen_MapMyRun_Balanced_Quality_Assessment.png)
-
----
-
-## What Was Not Concluded
-
-This investigation does **not** establish:
-
-- a MapMyRun implementation defect;
-- the responsible component or data owner;
-- population frequency or production severity;
-- exact Apple Health synchronization timing or transformation behavior;
-- whether Outside has already evaluated or intentionally accepted this tradeoff; or
-- the optimal product response.
-
-Those boundaries are part of the work, not disclaimers added afterward.
+AI assisted research, experiment planning, evidence organization, drafting, and visual production. I performed the field work, challenged unsupported connections, and retained ownership of the observations and judgments.
 
 ---
 
-## What I Would Investigate Next
-
-With product and engineering access, I would:
-
-- establish prevalence, user impact, recovery behavior, and downstream propagation;
-- review requirements, support signals, product policy, and prior decisions before proposing changes;
-- capture and replay pedestrian-to-vehicle transitions and GPS-obstruction traces deterministically;
-- compare prevention, detection, warning, correction, and recovery options against false-positive, accessibility, privacy, battery, and implementation costs;
-- validate behavior across the raw samples, accepted segments, saved workout, UI, synchronization, and downstream consumers; and
-- preserve the Gold Camp results as a positive resilience baseline.
-
----
-
-## Assessment Documents
-
-- [Weekend Quality Assessment — executive brief](Michael_Jensen_MapMyRun_Weekend_Quality_Assessment.pdf)
-- [Quality Risk Assessment and Engineering Strategy — detailed case study](Michael_Jensen_MapMyRun_Senior_QE_Assessment.pdf)
-
----
-
-## How the Interpretation Evolved
-
-The first published narrative connected the vehicle-transition and Gold Camp tracks too tightly. I caught that overreach, returned to the evidence, and revised the assessment so the independent test designs and conclusions were explicit. A later review sharpened the framing again: the strongest finding was not “MapMyRun failed,” but that documented behavior can still create a legitimate user-trust question.
-
-The raw observations did not change. The interpretation improved as uncertainty was challenged. That is the investigation’s most important process result: revise the story when the evidence demands it.
-
----
-
-## AI Assistance
-
-AI accelerated background research, test-design iteration, evidence organization, challenge of competing interpretations, visual production, and document drafting. I executed the field tests, captured the observations, corrected unsupported connections, and retained ownership of the final judgments and evidence boundaries.
-
----
 
 ## QA Portfolio Quick Reference
 
